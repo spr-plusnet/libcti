@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<groupId>de.plusnet.centraflex</groupId>
 	<artifactId>libcti</artifactId>
 	<version>2020.07.01-SNAPSHOT</version>
@@ -38,18 +38,55 @@
 		<dependency>
 			<groupId>jakarta.xml.bind</groupId>
 			<artifactId>jakarta.xml.bind-api</artifactId>
-			<version>3.0.1</version>
+			<version>3.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jaxb</groupId>
 			<artifactId>jaxb-runtime</artifactId>
-			<version>3.0.1</version>
+			<version>3.0.0</version>
 			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>3.0.1-SNAPSHOT</version>
+
+				<configuration>
+					<verbose>true</verbose>
+					<laxSchemaValidation>false</laxSchemaValidation>
+					<clearOutputDir>true</clearOutputDir>
+					<xjcSourceExcludeFilters>
+						<filter implementation="org.codehaus.mojo.jaxb2.shared.filters.pattern.PatternFileFilter">
+							<patterns>
+								<pattern>\.foo</pattern>
+							</patterns>
+						</filter>
+					</xjcSourceExcludeFilters>
+					<sources>
+						<source>src/main/xsd/XSPXMLSchema/XSPXMLSchema.xsd</source>
+						<source>src/main/xsd/XSISchema/XSISchema.xsd</source>
+						<source>src/main/xsd/CTISchema/CTISchema.xsd</source>
+					</sources>
+					<locale>en</locale>
+				</configuration>
+
+				<executions>
+					<execution>
+						<id>xjc-schema1</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+						<configuration>
+							<target>2.1</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -62,7 +99,7 @@
 						</goals>
 						<configuration>
 							<sources>
-								<source>src/generated/java</source>
+								<source>target/generated-sources/jaxb</source>
 							</sources>
 						</configuration>
 					</execution>
@@ -87,13 +124,13 @@
 			<url>https://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
 		</pluginRepository>
 	</pluginRepositories>
-	
+
 	<distributionManagement>
-   <repository>
-     <id>github</id>
-     <name>GitHub spr-plusnet Apache Maven Packages</name>
-     <url>https://maven.pkg.github.com/spr-plusnet/libcti</url>
-   </repository>
-</distributionManagement>
-	
+		<repository>
+			<id>github</id>
+			<name>GitHub spr-plusnet Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/spr-plusnet/libcti</url>
+		</repository>
+	</distributionManagement>
+
 </project>

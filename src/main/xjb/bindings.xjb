@@ -1,0 +1,29 @@
+<jxb:bindings 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:jxb="https://jakarta.ee/xml/ns/jaxb"
+	xmlns:xjc="https://jakarta.ee/xml/ns/jaxb/xjc"
+   jxb:extensionBindingPrefixes="xjc"
+	version="3.0">
+
+	<jxb:bindings schemaLocation="../xsd/XSPXMLSchema/XSPXMLSchema.xsd" node="/xs:schema">
+		<jxb:schemaBindings xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc">
+			<jxb:package name="com.broadsoft.xspxml">
+			</jxb:package>
+		</jxb:schemaBindings>
+	</jxb:bindings>
+
+	<jxb:bindings schemaLocation="../xsd/XSISchema/XSISchema.xsd" node="/xs:schema">
+		<jxb:schemaBindings xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc">
+			<jxb:package name="com.broadsoft.xsi">
+			</jxb:package>
+		</jxb:schemaBindings>
+	</jxb:bindings>
+
+	<jxb:bindings schemaLocation="../xsd/CTISchema/CTISchema.xsd" node="/xs:schema">
+		<jxb:schemaBindings xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc">
+			<jxb:package name="com.broadsoft.cti">
+			</jxb:package>
+		</jxb:schemaBindings>
+	</jxb:bindings>
+
+</jxb:bindings>

@@ -1,0 +1,13 @@
+Code aus XSDs erzeugen
+
+1. In XSIProfile das doppelte Events/EventTypes in ca. Zeile 200 entfernen
+
+2. Sicherstellen, dass ein jaxb2-maven-plugin in Version 3.0 oder neuer verfügbar ist.
+   Dezember 2021 war nur Version 2.5 im Maven Repo verfügbar
+   Version 3.0.1-SNAPSHOT konnte aus Git-Repo https://github.com/mojohaus/jaxb2-maven-plugin
+   installiert werden
+   mvn install -DskipTests=trure
+   
+3. Code erzeugen
+   mvn  -f pom-with_extra_generated.xml clean jaxb2:xjc
+   
