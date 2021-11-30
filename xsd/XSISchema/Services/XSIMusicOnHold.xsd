@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!-- ************************************************************************ -->
+<!--     Copyright © 2017 BroadSoft Inc.             -->
+<!-- ************************************************************************ -->
+<!--                XSI  X M L  S C H E M A                                   -->
+<!--               *************************                                  -->
+<!-- This file defines the schema types and elements required by the          -->
+<!-- Music On Hold User Service interface in the                              -->
+<!-- http://schema.broadsoft.com/xsi namespace.                               -->
+<!-- ************************************************************************ -->
+
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://schema.broadsoft.com/xsi"
+  targetNamespace="http://schema.broadsoft.com/xsi"
+  attributeFormDefault="unqualified" elementFormDefault="qualified"
+  version="1.0">
+
+  <xs:include schemaLocation="../XSIDataTypes.xsd" />
+  
+  <xs:element name="MusicOnHold">
+    <xs:annotation>
+      <xs:documentation>
+        User Music On Hold Service.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="ActivatableServiceInfo">
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element> 
+  
+  <xs:element name="PlayDynamicMusicOnHold">
+    <xs:annotation>
+      <xs:documentation>
+        Requests a MOH to be played to the specified call. The MOH is defined by 
+        a series of up to four audio or video URLs to be played sequentially. For an audio-only call, 
+        the music is played using the audio URLs, which are played in sequence.
+        For a video call, video URLs will be used if they are provided. And if no video URL provided, 
+        audio file will be used.
+
+        Release Added:  R24.0        
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>        
+        <xs:element name="audioUrlList" type="MusicOnHoldURIList">
+          <xs:annotation>
+            <xs:documentation>
+              The list of audio URL(s) to play for a held call.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="videoUrlList" type="MusicOnHoldURIList"
+          minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>
+              The list of video URL(s) to play for a held call.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+   <xs:complexType name="MusicOnHoldURIList">
+    <xs:annotation>
+      <xs:documentation>
+        Contains a list of URI that are used in the context
+        of a PlayDynamicMusicOnHoldRequest.
+
+        Release Added:  R24.0
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="uri" type="NonEmptyURI" maxOccurs="4"/>
+    </xs:sequence>
+  </xs:complexType>      
+</xs:schema>
