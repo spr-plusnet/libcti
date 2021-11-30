@@ -10,4 +10,17 @@ Code aus XSDs erzeugen
    
 3. Code erzeugen
    mvn  -f pom-with_extra_generated.xml clean jaxb2:xjc
+   Fehler ignorieren:
+     [INFO] null [-1,-1] 
+     org.xml.sax.SAXParseException: generating code
    
+
+4. Erzeugten Code von 
+     target/generated-sources/jaxb/com
+   nach
+     src/generated/java/
+   kopieren
+
+5. Glücklich sein - das herauszufinden hat mich 6h meines Lebens gekostet!
+   (evtl. eingecheckte Sachen unter foo/ und generateCode.sh sind hinfällig bzw.
+   haben wegen seltsamer Fehler nicht funktioniert)
