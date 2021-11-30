@@ -22,5 +22,4 @@ Code aus XSDs erzeugen
    kopieren
 
 5. Glücklich sein - das herauszufinden hat mich 6h meines Lebens gekostet!
-   (evtl. eingecheckte Sachen unter foo/ und generateCode.sh sind hinfällig bzw.
-   haben wegen seltsamer Fehler nicht funktioniert)
+   (evtl. eingecheckte Sachen unter foo/ und generateCode.sh sind damit eigentlich hinfällig )
