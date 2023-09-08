@@ -1,0 +1,25 @@
+<xsp:request version="17.0" xmlns:xsp="http://schema.broadsoft.com/XspXMLInterface">
+	<requestId>9</requestId>
+	<sessionId>MySessionId</sessionId>
+	<credentials>YWRtaW5DVElAYnJvYWRzb2Z0LmNvbTpwYXNzd29yZA==</credentials>
+	<ConferenceStartRequest>
+		<uri>/com.broadsoft.xsi-actions/v2.0/user/%subscriberId%/calls/conference</uri>
+		<method>POST</method>
+		<version />
+		<params>
+			<subscriberId>subscriberS1@broadsoft.com</subscriberId>
+		</params>
+		<xsp:payload>
+			<xsi:Conference xmlns:xsi="http://schema.broadsoft.com/xsi">
+				<xsi:conferenceParticipantList>
+					<xsi:conferenceParticipant>
+						<xsi:callId>callhalf-75923:0</xsi:callId>
+					</xsi:conferenceParticipant>
+					<xsi:conferenceParticipant>
+						<xsi:callId>callhalf-75923:1</xsi:callId>
+					</xsi:conferenceParticipant>
+				</xsi:conferenceParticipantList>
+			</xsi:Conference>
+		</xsp:payload>
+	</ConferenceStartRequest>
+</xsp:request>

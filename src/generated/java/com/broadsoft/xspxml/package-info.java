@@ -5,5 +5,12 @@
 // Generated on: 2021.11.30 at 02:59:52 PM CET 
 //
 
-@jakarta.xml.bind.annotation.XmlSchema(namespace = "http://schema.broadsoft.com/XspXMLInterface")
+@jakarta.xml.bind.annotation.XmlSchema(namespace = "http://schema.broadsoft.com/XspXMLInterface",
+xmlns={
+        @jakarta.xml.bind.annotation.XmlNs(prefix = "xsp",namespaceURI = "http://schema.broadsoft.com/XspXMLInterface"),
+        @jakarta.xml.bind.annotation.XmlNs(prefix = "xsi",namespaceURI = "http://schema.broadsoft.com/xsi"),
+        @jakarta.xml.bind.annotation.XmlNs(prefix = "",namespaceURI = "http://schema.broadsoft.com/CTI"),
+},
+
+elementFormDefault=jakarta.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package com.broadsoft.xspxml;
